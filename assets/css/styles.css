@@ -57,6 +57,12 @@ ul{
 a{
     text-decoration: none;
 }
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /*====== GLOBAL CSS CLASSES =====*/
 .section{
   padding: 4rem 0 2rem;
@@ -71,7 +77,7 @@ a{
 }
 
 .bd-grid{
-  display: grid;
+  display: grid; 
   gap: 1.5rem;
 }
 /*=== HEADER =====*/
@@ -188,12 +194,107 @@ a{
 }
 .dropdown:hover > .dropdown__menu{
     display: block;
+    background-color: #FFF;
 
 }
 .dropdown:hover .dropdown__icon{
     transform: rotate(180deg);
 }
 
+/*==== HOME SLIDE CONTAINER ======*/
+.slideshow__container{
+    max-width: 100%;
+    max-height: 20%;
+    position: relative;
+    margin: auto;
+}
+.my__slides{
+    display: none;
+}
+.my__slides img{
+    width: 100%;
+}
+.prev,
+.next{
+    cursor: pointer;
+    position: absolute;
+    top: 15%;
+    width: auto;
+    padding: 16px;
+    margin-top: -10px;
+    color: var(--dark-color);
+    font-weight: bold;
+    font-size: 28px;
+    transition: 0.6s ease-in;
+    user-select: none;
+}
+.prev:hover,
+.next:hover {
+    color: var(--first-color);
+}
+/*==== TAKE "NEXT BUTTON" TO RIGHT ====*/
+.next{
+    right: 0;
+}
+/*==== SLIDE IMAGE CAPTION ===*/
+.caption{
+    padding: 8px 12px;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    left: 4;
+    background-color: rgba(228, 209, 124, 1);
+}
+.caption .text{
+    color: var(--text-color);
+    font-size: var(--h2-font-size);
+}
+.btn{
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: .75rem 2.5rem;
+    font-weight: 600;
+    border-radius: .5rem;
+
+}
+.btn:hover{
+    background-color: var(--first-color-light);
+    color: var(--dark-color);
+}
+.indicator {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease-in-out;
+}
+
+.current, .indicator:hover {
+  background-color: var(--first-color);
+}
+/*===== ANIMATE SLIDE =====*/
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+  transition: .5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
 /*===== FOOTER ======*/
 .footer__container{
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -232,6 +333,29 @@ a{
     margin-top: 4rem;
 }
 /*=== MEDIA QUERIRS ===*/
+@media screen and (max-width: 768px){
+    .caption{
+        background: rgba(0, 0, 0, 0.363);
+        width: 100%;
+        bottom: 0;
+        text-align: left;
+
+    }
+    .caption .text{
+        color: #FFF;
+        font-size: var(--normal-font-size);
+    }
+    .btn{
+        display: inline-block;
+        background-color: var(--first-color);
+        color: #fff;
+        padding: .55rem 1.5rem;
+        font-weight: 600;
+        border-radius: .5rem;
+
+    }
+
+}
 @media screen and (min-width: 576px){
     nav{
         width: 288px;
@@ -308,6 +432,8 @@ a{
     .dropdown__item{
         margin: .5rem 0;
     }
+
+    
 }
 @media screen and (min-width: 968px){
     :root{
